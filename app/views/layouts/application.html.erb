@@ -8,6 +8,12 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
+  <nav>
+    <ul>
+      <li><%= link_to 'Sign Up', new_model_registration_path %></li>
+    </ul>
+  </nav>
+
   <body>
     <%= yield %>
   </body>
