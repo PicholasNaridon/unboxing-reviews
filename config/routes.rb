@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   resources :items
 
-  devise_for :users do
-    resources :items
-  end
+  devise_for :users
+
 
   get 'homes/index'
 

@@ -5,14 +5,18 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @user = current_user
   end
 
   def show
     @item = Item.find(params[:id])
+    @creator = @item.user
   end
 
   def create
     @item = Item.new(item_params)
+    @item.user = current_user
+
 
     if @item.save
       flash[:notice] = "Item added successfully"
@@ -25,6 +29,6 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name)
+    params.require(:item).permit(:name, :user)
   end
 end
