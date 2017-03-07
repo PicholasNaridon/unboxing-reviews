@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-feature 'sign up', %Q{
+feature 'Sign Up' , %Q{
   As an authenticated user
   I want to sign up
   So that I can add items and reviews
