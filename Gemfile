@@ -25,6 +25,9 @@ group :development, :test do
   gem 'shoulda'
   gem 'valid_attribute'
   gem 'shoulda-matchers', require: false
+end
+
+group :test do
   gem 'coveralls', require: false
 end
 
