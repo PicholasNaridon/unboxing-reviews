@@ -10,9 +10,9 @@
   <nav>
     <ul>
       <% if user_signed_in? %>
-      <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+      <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %> | <%= link_to 'My Profile', edit_user_registration_path %></li>
       <% else %>
-      <li><%= link_to 'Sign Up', new_user_registration_path %> | <%= link_to 'Login', new_user_session_path  %></li>
+      <li><%= link_to 'Sign Up', new_user_registration_path %> | <%= link_to 'Login', new_user_session_path %></li>
       <% end %>
     </ul>
   </nav>
@@ -20,6 +20,7 @@
   <p class="alert"><%= alert %></p>
 
   <body>
+    <%= link_to 'Home', root_path %>
     <%= yield %>
   </body>
 </html>
