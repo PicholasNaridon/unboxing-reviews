@@ -16,6 +16,8 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @creator = @item.user
+    @review = Review.new
+    @reviews = @item.reviews
   end
 
   def update

@@ -15,8 +15,14 @@
   <strong>Youtube</strong>
   <%= @item.youtube_url %>
   <strong><%= @item.purchase_url %></strong>
+  <strong> Reviews: </strong>
+  <br>
+    <% @reviews.each do |review| %>
+        <p class="review_li"> Posted by <%= review.user.username %>:<br>  <%= review.body %></p>
+    <% end %>
 
   <% if @creator == current_user %>
  <%= link_to 'Edit', edit_item_path(@item) %> |
  <%= link_to 'Delete Item', @item, method: :delete%>
-<% end %>
+ <% end %>
+<%= render "review_form", item: @item, review: @review %>
