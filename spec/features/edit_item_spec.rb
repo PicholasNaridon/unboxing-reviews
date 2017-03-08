@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-feature 'Create Item' , %Q{
+feature 'Edit Item' , %Q{
   As an authenticated user
-  I want to add items
-  So that others can review them
+  I want to edit my item
+  In case I make a mistake
 } do
 
   scenario 'clicking add item will add item to list' do
@@ -18,11 +18,16 @@ feature 'Create Item' , %Q{
     click_link 'Add New Item'
     fill_in 'Name', with: "things"
     click_button 'Add Item'
+    click_link 'Edit'
+    fill_in 'Name', with: "somethingelse"
+    click_button 'Add Item'
 
-    expect(page).to have_content("Item added successfully")
-    expect(page).to have_content("things")
+    expect(page).to have_content("Your item has been updated")
+    expect(page).to have_content("somethingelse")
+    expect(page).to_not have_content("things")
   end
-  scenario 'Expect error for blank name' do
+
+  scenario 'clicking add item will add item to list' do
     visit root_path
     click_link 'Sign Up'
     fill_in 'Username', with: 'Jon'
@@ -32,18 +37,14 @@ feature 'Create Item' , %Q{
     click_button 'Sign Up'
     click_link 'Items'
     click_link 'Add New Item'
-    fill_in 'Name', with: nil
+    fill_in 'Name', with: "things"
+    click_button 'Add Item'
+    click_link 'Edit'
+    fill_in 'Name', with: ""
     click_button 'Add Item'
 
-
-    expect(page).to_not have_content("Item added successfully")
+    expect(page).to_not have_content("Your item has been updated")
     expect(page).to have_content("Name can't be blank")
   end
-  scenario 'Unregistered user cannot add item' do
-    visit root_path
-    click_link 'Items'
-    click_link 'Add New Item'
 
-    expect(page).to have_content("Please log in to use this feature")
-  end
 end
