@@ -8,21 +8,36 @@
   <%= @item.name %>
   <br>
   <strong>Description:</strong>
-  <%= @item.description %>
+    <%= @item.description %>
   <br>
-  <strong>Image</strong>
-  <%= @item.image_url %>
-  <strong>Youtube</strong>
-  <%= @item.youtube_url %>
-  <strong><%= @item.purchase_url %></strong>
+  <strong>Image:</strong>
+    <%= @item.image_url %>
+    <br>
+  <strong>Youtube:</strong>
+    <%= @item.youtube_url %>
+    <br>
+  <strong>Purchase URL: </strong>
+    <%= @item.purchase_url %>
+    <br>
   <strong> Reviews: </strong>
-  <br>
+
+
+<br>
+
     <% @reviews.each do |review| %>
-        <p class="review_li"> Posted by <%= review.user.username %>:<br>  <%= review.body %></p>
+        <p> Posted by <%= review.user.username %>:<br>  <%= review.body %></p>
+          <% if review.user == current_user %>
+            <%= link_to 'Delete Review', item_review_path(@item, review), method: :delete %>
+            <%= link_to "Edit", edit_item_review_path(@item, review) %>
+        <% end %>
     <% end %>
 
-  <% if @creator == current_user %>
- <%= link_to 'Edit', edit_item_path(@item) %> |
- <%= link_to 'Delete Item', @item, method: :delete%>
- <% end %>
-<%= render "review_form", item: @item, review: @review %>
+<br   />
+
+
+<%= render "reviews/review_form", item: @item, review: @review %>
+
+<% if @creator == current_user %>
+  <%= link_to 'Edit', edit_item_path(@item) %> |
+  <%= link_to 'Delete Item', @item, method: :delete%>
+<% end %>

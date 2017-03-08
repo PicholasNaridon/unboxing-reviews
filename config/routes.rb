@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :items do
-    resources :reviews, only: [:create]
+    resources :reviews
   end
+
+  resources :reviews
 
   devise_for :users
 
