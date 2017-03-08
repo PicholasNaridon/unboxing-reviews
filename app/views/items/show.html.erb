@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<h1> <%= @item.name %> </h1>
+
+<h2>Posted by <%= @creator.username %> </h2>
+<p>
+  <strong>Name:</strong>
+  <%= @item.name %>
+  <br>
+  <strong>Description:</strong>
+  <%= @item.description %>
+  <br>
+  <strong>Image</strong>
+  <%= @item.image_url %>
+  <strong>Youtube</strong>
+  <%= @item.youtube_url %>
+  <strong><%= @item.purchase_url %></strong>
+
+  <% if @creator == current_user %>
+ <%= link_to 'Edit', edit_item_path(@item) %> |
+ <%= link_to 'Delete Item', @item, method: :delete%>
+<% end %>

@@ -25,4 +25,15 @@ feature 'Login' , %Q{
     expect(page).to have_content("Sign Out")
     expect(page).to_not have_content("Sign In")
   end
+
+  scenario 'Unsuccessful Sign in' do
+    visit root_path
+    click_link 'Login'
+    fill_in 'Email', with: ''
+    fill_in 'Password', with: 'password'
+    click_button 'Log in'
+
+    # expect(page).to have_content("Invalid Email or password.")
+    expect(page).to have_content("Login")
+  end
 end

@@ -1,0 +1,29 @@
+<%= form_for (@item) do |f| %>
+<% if item.errors.any? %>
+ <div id="error_explanation">
+   <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+   <ul>
+     <% item.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+     <% end %>
+   </ul>
+ </div>
+ <% end %>
+
+ <%= f.label :name %>
+ <%= f.text_field :name %>
+ <%= f.label :description %>
+ <%= f.text_field :description %>
+ <%= f.label :image_url %>
+ <%= f.text_field :image_url %>
+ <%= f.label :youtube_url %>
+ <%= f.text_field :youtube_url %>
+ <%= f.label :purchase_url %>
+ <%= f.text_field :purchase_url %>
+
+
+
+
+ <%= f.submit "Add Item"%>
+<% end %>
