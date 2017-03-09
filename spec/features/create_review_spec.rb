@@ -1,23 +1,14 @@
 require 'rails_helper'
 
-feature 'Create Review' , %Q{
-  As an authenticated user
-  I want to add a review to an item
-  So that others can read it
-} do
 
-  scenario 'clicking Submit a review will add a review to list' do
-    visit root_path
-    click_link 'Sign Up'
-    fill_in 'Username', with: 'Jon'
-    fill_in 'Email', with: 'test@test.com'
-    fill_in 'Password', with: 'password'
-    fill_in 'Password Confirmation', with: 'password'
-    click_button 'Sign Up'
-    click_link 'Items'
-    click_link 'Add New Item'
-    fill_in 'Name', with: "things"
-    click_button 'Add Item'
+feature "Add Review" do
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:item) { FactoryGirl.create(:item, user: user) }
+
+
+  scenario 'clicking submit a review should submit a review when signed in ' do
+    sign_in(user)
+    visit item_path(item)
     fill_in 'Submit a review', with: "Test review"
     click_button "Submit"
 
@@ -27,17 +18,8 @@ feature 'Create Review' , %Q{
 
 
   scenario 'Adding a review with a blank body' do
-    visit root_path
-    click_link 'Sign Up'
-    fill_in 'Username', with: 'Jon'
-    fill_in 'Email', with: 'test@test.com'
-    fill_in 'Password', with: 'password'
-    fill_in 'Password Confirmation', with: 'password'
-    click_button 'Sign Up'
-    click_link 'Items'
-    click_link 'Add New Item'
-    fill_in 'Name', with: "things"
-    click_button 'Add Item'
+    sign_in(user)
+    visit item_path(item)
     fill_in 'Submit a review', with: ""
     click_button "Submit"
 
@@ -45,20 +27,8 @@ feature 'Create Review' , %Q{
   end
 
   scenario 'Unauthenticated user attempts to add review' do
-    visit root_path
-    click_link 'Sign Up'
-    fill_in 'Username', with: 'Jon'
-    fill_in 'Email', with: 'test@test.com'
-    fill_in 'Password', with: 'password'
-    fill_in 'Password Confirmation', with: 'password'
-    click_button 'Sign Up'
-    click_link 'Items'
-    click_link 'Add New Item'
-    fill_in 'Name', with: "things"
-    click_button 'Add Item'
-    click_link 'Sign Out'
-    click_link 'Items'
-    click_link 'things'
+    visit item_path(item)
+
 
     expect(page).to_not have_content("Submit a review")
   end

@@ -1,23 +1,14 @@
 require 'rails_helper'
 
-feature 'Edit Item' , %Q{
-  As an authenticated user
-  I want to edit my item
-  In case I make a mistake
-} do
 
-  scenario 'clicking add item will add item to list' do
-    visit root_path
-    click_link 'Sign Up'
-    fill_in 'Username', with: 'Jon'
-    fill_in 'Email', with: 'test@test.com'
-    fill_in 'Password', with: 'password'
-    fill_in 'Password Confirmation', with: 'password'
-    click_button 'Sign Up'
-    click_link 'Items'
-    click_link 'Add New Item'
-    fill_in 'Name', with: "things"
-    click_button 'Add Item'
+feature "Add Review" do
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:item) { FactoryGirl.create(:item, user: user) }
+
+
+  scenario 'clicking edit should update the item when signed in ' do
+    sign_in(user)
+    visit item_path(item)
     click_link 'Edit'
     fill_in 'Name', with: "somethingelse"
     click_button 'Add Item'
@@ -27,18 +18,9 @@ feature 'Edit Item' , %Q{
     expect(page).to_not have_content("things")
   end
 
-  scenario 'clicking add item will add item to list' do
-    visit root_path
-    click_link 'Sign Up'
-    fill_in 'Username', with: 'Jon'
-    fill_in 'Email', with: 'test@test.com'
-    fill_in 'Password', with: 'password'
-    fill_in 'Password Confirmation', with: 'password'
-    click_button 'Sign Up'
-    click_link 'Items'
-    click_link 'Add New Item'
-    fill_in 'Name', with: "things"
-    click_button 'Add Item'
+  scenario 'editing item with blank name' do
+    sign_in(user)
+    visit item_path(item)
     click_link 'Edit'
     fill_in 'Name', with: ""
     click_button 'Add Item'
