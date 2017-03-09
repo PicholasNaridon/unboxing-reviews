@@ -62,8 +62,6 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 end
 
-
-
   def sign_in(user)
     visit root_path
     click_link "Login"

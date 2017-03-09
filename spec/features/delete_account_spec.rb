@@ -1,12 +1,10 @@
 require 'rails_helper'
 
-
 feature "Delete Account" do
   let!(:user) { FactoryGirl.create(:user) }
 
   scenario 'clicking delete should delete account when signed in ' do
     sign_in(user)
-
     click_link 'My Profile'
     click_button 'Cancel my account'
 

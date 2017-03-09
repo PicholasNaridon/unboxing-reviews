@@ -25,9 +25,6 @@ feature "User creates new item" do
     expect(page).to_not have_content("Item added successfully")
     expect(page).to have_content("Name can't be blank")
   end
-end
-
-feature "Non-user tries to create new item" do
 
   scenario 'Unregistered user cannot add item' do
     visit root_path

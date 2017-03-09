@@ -1,10 +1,8 @@
 require 'rails_helper'
 
-
 feature "Edit Review" do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:item) { FactoryGirl.create(:item, user: user) }
-
 
   scenario 'clicking Edit will update the content of the review' do
     sign_in(user)
@@ -34,7 +32,6 @@ feature "Edit Review" do
 
   scenario 'Unauthenticated user attempts to edit review' do
     visit item_path(item)
-
 
     expect(page).to_not have_content("Edit Review")
   end

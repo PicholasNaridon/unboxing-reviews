@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 feature "Sign Out" do
   let!(:user) { FactoryGirl.create(:user) }
 
@@ -13,9 +12,9 @@ feature "Sign Out" do
     expect(page).to have_content("Sign Up")
     expect(page).to_not have_content("Sign Out")
   end
+  
   scenario 'Visiting root and expect not to see sign out' do
     visit root_path
     expect(page).to_not have_content("Sign Out")
   end
-
 end
