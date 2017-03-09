@@ -37,17 +37,16 @@ class ReviewsController < ApplicationController
     redirect_to item_path(@item), notice: "Deleted"
   end
 
-private
+  private
 
   def review_params
     params.require(:review).permit(:body)
   end
 
   def authorize_user
-    if !user_signed_in? #|| current_user.admin?
+    if !user_signed_in?
       flash[:notice] = "Please log in to use this feature"
       redirect_to new_user_session_path
     end
   end
-
 end
