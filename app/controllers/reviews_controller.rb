@@ -7,10 +7,10 @@ class ReviewsController < ApplicationController
     @review.user = @user
     if @review.save
       flash[:notice] = "Review successfully saved!!"
-        redirect_to item_path(@item)
-      else
-        flash[:notice] = "Review did not save."
-        redirect_to item_path(@item)
+      redirect_to item_path(@item)
+    else
+      flash[:notice] = "Review did not save."
+      redirect_to item_path(@item)
     end
   end
 
@@ -22,7 +22,6 @@ class ReviewsController < ApplicationController
   def update
     @item = Item.find(params[:item_id])
     @review = Review.find(params[:id])
-
 
     if @review.update(review_params)
       redirect_to @item, notice: "review was updated"
@@ -38,13 +37,11 @@ class ReviewsController < ApplicationController
     redirect_to item_path(@item), notice: "Deleted"
   end
 
-
 private
 
   def review_params
     params.require(:review).permit(:body)
   end
-
 
   def authorize_user
     if !user_signed_in? #|| current_user.admin?
