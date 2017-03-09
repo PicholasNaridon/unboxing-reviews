@@ -11,10 +11,12 @@
   <br>
   <strong>Image:</strong>
     <%= @item.image_url %>
-    <br>
-  <strong>Youtube:</strong>
-    <%= @item.youtube_url %>
-    <br>
+
+  <% if @item.youtube_url.nil? == false %>
+    <strong> Video: </strong><br>
+    <iframe width="560" height="315" src='https://www.youtube.com/embed/<%= @embed %>' frameborder="0" allowfullscreen></iframe><br>
+  <% end %>
+
   <strong>Purchase URL: </strong>
     <%= @item.purchase_url %>
     <br>
@@ -40,13 +42,13 @@
 
 <div>
 
-    <% @reviews.each do |review| %>
-        <p><%= review.user.username %> said:<br><%= review.body %> <br> Rating: <%= review.rating %></p>
-          <% if review.user == current_user %>
-            <%= link_to 'Delete Review', item_review_path(@item, review), method: :delete %> |
-            <%= link_to "Edit Review", edit_item_review_path(@item, review) %>
-        <% end %>
-    <% end %>
+  <% @reviews.each do |review| %>
+      <p><%= review.user.username %> said:<br><%= review.body %> <br> Rating: <%= review.rating %></p>
+        <% if review.user == current_user %>
+          <%= link_to 'Delete Review', item_review_path(@item, review), method: :delete %> |
+          <%= link_to "Edit Review", edit_item_review_path(@item, review) %>
+      <% end %>
+  <% end %>
 
 </div>
 

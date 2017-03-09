@@ -19,6 +19,8 @@ class ItemsController < ApplicationController
     @review = Review.new
     @reviews = @item.reviews
     @reviews_start = 0
+    @url = @item.youtube_url
+    @embed = @url.split("=").last
   end
 
   def update
@@ -55,7 +57,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :user)
+    params.require(:item).permit(:name, :description, :image_url, :purchase_url, :youtube_url, :user)
   end
 
   def authorize_user
