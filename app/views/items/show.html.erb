@@ -27,15 +27,16 @@
     <% @reviews.each do |review| %>
         <p> Posted by <%= review.user.username %>:<br>  <%= review.body %></p>
           <% if review.user == current_user %>
-            <%= link_to 'Delete Review', item_review_path(@item, review), method: :delete %>
-            <%= link_to "Edit", edit_item_review_path(@item, review) %>
+            <%= link_to 'Delete Review', item_review_path(@item, review), method: :delete %> |
+            <%= link_to "Edit Review", edit_item_review_path(@item, review) %>
         <% end %>
     <% end %>
 
 <br   />
 
-
-<%= render "reviews/review_form", item: @item, review: @review %>
+<% if user_signed_in? %>
+  <%= render "reviews/review_form", item: @item, review: @review %>
+<% end %>
 
 <% if @creator == current_user %>
   <%= link_to 'Edit', edit_item_path(@item) %> |
