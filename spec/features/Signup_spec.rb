@@ -41,12 +41,10 @@ feature 'Sign up' , %Q{
     fill_in 'Password Confirmation', with: 'password1'
     click_button 'Sign Up'
 
-
     expect(page).to have_content("Email has already been taken")
     expect(page).to have_content("Password confirmation doesn't match Password")
     expect(page).to_not have_content("Welcome! You have signed up successfully.")
     expect(page).to_not have_content("Sign Out")
 
   end
-
 end
