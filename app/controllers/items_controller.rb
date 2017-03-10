@@ -59,7 +59,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :user, :term)
+    params.require(:item).permit(:name, :description, :image_url, :purchase_url, :youtube_url, :user, :term)
   end
 
   def authorize_user
