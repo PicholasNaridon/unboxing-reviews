@@ -11,10 +11,13 @@
   <br>
   <strong>Image:</strong>
     <%= @item.image_url %>
+    <br>
 
-  <% if @item.youtube_url.nil? == false %>
+  <% if @item.youtube_url != nil %>
     <strong> Video: </strong><br>
-    <iframe width="560" height="315" src='https://www.youtube.com/embed/<%= @embed %>' frameborder="0" allowfullscreen></iframe><br>
+    <iframe width="560" height="315" src='https://www.youtube.com/embed/<%=@embed%>' frameborder="0" allowfullscreen></iframe><br>
+    <% else %>
+    <br>
   <% end %>
 
   <strong>Purchase URL: </strong>
@@ -29,7 +32,7 @@
 
   <% reviews_all = @item.reviews %>
   <% reviews_all.each do |review| %>
-  <% @reviews_start += review.rating %>
+  <% @reviews_start += review.rating.to_f %>
   <% end %>
 
 
