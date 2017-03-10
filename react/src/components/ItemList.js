@@ -6,9 +6,17 @@ class ItemList extends Component {
   super(props)
     this.state = {
       items: [],
-    
+      currentPage: 1,
+      itemsPerPage: 5
     }
     this.getData = this.getData.bind(this);
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick(event) {
+    this.setState({
+      currentPage: Number(event.target.id)
+    });
   }
 
   getData() {
@@ -34,21 +42,46 @@ class ItemList extends Component {
   }
 
   render() {
+    let indexOfLastItem = this.state.currentPage * this.state.itemsPerPage
+    let indexOfFirstItem = indexOfLastItem - this.state.itemsPerPage
+    let currentItems = this.state.items.slice(indexOfFirstItem, indexOfLastItem)
 
-    let newItems = this.state.items.map((item, index) => {
+    let newItems = currentItems.map((item, index) =>{
       return (
         <ItemListItem
           id={item.id}
-          key={item.id}
+          key={index}
           name={item.name}
         />
       )
     });
 
+    let pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(this.state.items.length / this.state.itemsPerPage); i++){
+      pageNumbers.push(i);
+    }
+
+    let renderPageNumbers = pageNumbers.map(number => {
+      return (
+        <li
+        key={number}
+        id={number}
+        onClick={this.handleClick}
+        >
+        {number}
+        </li>
+      );
+    });
+
     return(
       <div>
+        <h2> Items! </h2>
         {newItems}
+        <ul>
+        {renderPageNumbers}
+        </ul>
       </div>
+
     )
   }
 };
