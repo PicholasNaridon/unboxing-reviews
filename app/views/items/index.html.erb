@@ -2,7 +2,9 @@
 
 <h1>Items</h1>
 
+
 <%= form_tag(items_path, method: :get) do %>
+  <%= label_tag :term %>
   <%= text_field_tag :term, params[:term] %>
   <%= submit_tag 'Search', name: nil %>
 <% end %>
