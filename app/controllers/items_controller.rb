@@ -19,9 +19,6 @@ class ItemsController < ApplicationController
     @review = Review.new
     @reviews = @item.reviews
     @reviews_start = 0
-    @url = @item.youtube_url
-    @embed = @url.split("=").last
-
   end
 
   def update
