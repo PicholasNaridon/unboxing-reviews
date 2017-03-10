@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-  
   def self.search(term)
     if term
       where('name ILIKE ?', "%#{term}%")

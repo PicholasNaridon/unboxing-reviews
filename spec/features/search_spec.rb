@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 feature "Search for item using search bar" do
-    let!(:user) { FactoryGirl.create(:user) }
-    let!(:item_1) { FactoryGirl.create(:item, user: user) }
-    let!(:item_2) { FactoryGirl.create(:item, user: user) }
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:item_1) { FactoryGirl.create(:item, user: user) }
+  let!(:item_2) { FactoryGirl.create(:item, user: user) }
 
   scenario 'user searches for an item that does exist ' do
     visit root_path
