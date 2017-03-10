@@ -18,6 +18,7 @@ class ItemsController < ApplicationController
     @creator = @item.user
     @review = Review.new
     @reviews = @item.reviews
+    @reviews_start = 0
   end
 
   def update
@@ -54,7 +55,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :user)
+    params.require(:item).permit(:name, :description, :image_url, :purchase_url, :youtube_url, :user)
   end
 
   def authorize_user
