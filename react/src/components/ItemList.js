@@ -7,7 +7,7 @@ class ItemList extends Component {
     this.state = {
       items: [],
       currentPage: 1,
-      itemsPerPage: 5
+      itemsPerPage: 3
     }
     this.getData = this.getData.bind(this);
     this.handleClick = this.handleClick.bind(this)
