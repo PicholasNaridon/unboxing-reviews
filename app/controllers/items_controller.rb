@@ -1,7 +1,12 @@
 class ItemsController < ApplicationController
   before_action :authorize_user, except: [:index, :show]
   def index
-    @items = Item.all
+    @items = Item.search(params[:term])
+    # @items = if params[:term]
+    #   Item.where('LOWER(name) LIKE ?', "%#{params[:term]}%")
+    # else
+    #   Item.all
+    # end
   end
 
   def new
@@ -54,7 +59,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :user)
+    params.require(:item).permit(:name, :user, :term)
   end
 
   def authorize_user
