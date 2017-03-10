@@ -8,9 +8,11 @@ feature "Edit Review" do
     sign_in(user)
     visit item_path(item)
     fill_in 'Submit a review', with: "Test review"
+    choose("review_rating_1")
     click_button "Submit"
     click_link 'Edit Review'
     fill_in 'Submit a review', with: 'Edited review'
+    choose("review_rating_1")
     click_button 'Submit'
 
     expect(page).to have_content("review was updated")
@@ -21,8 +23,10 @@ feature "Edit Review" do
     sign_in(user)
     visit item_path(item)
     fill_in 'Submit a review', with: "Test review"
+    choose("review_rating_1")
     click_button "Submit"
     click_link 'Edit Review'
+    choose("review_rating_1")
     fill_in 'Submit a review', with: ''
     click_button 'Submit'
 

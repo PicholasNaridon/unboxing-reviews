@@ -23,6 +23,7 @@ class ItemsController < ApplicationController
     @creator = @item.user
     @review = Review.new
     @reviews = @item.reviews
+    @reviews_start = 0
   end
 
   def update
