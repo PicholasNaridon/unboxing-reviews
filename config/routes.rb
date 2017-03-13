@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :items
 
+  resources :search
+
   resources :reviews
 
   devise_for :users
