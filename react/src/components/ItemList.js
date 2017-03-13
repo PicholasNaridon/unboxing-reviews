@@ -3,12 +3,12 @@ import ItemListItem from './ItemItem';
 
 class ItemList extends Component {
   constructor(props) {
-  super(props)
+  super(props);
     this.state = {
       items: [],
       currentPage: 1,
       itemsPerPage: 5
-    }
+    };
     this.getData = this.getData.bind(this);
     this.handleClick = this.handleClick.bind(this)
   }
@@ -39,7 +39,7 @@ class ItemList extends Component {
 
   componentDidMount() {
     this.getData();
-  }
+  };
 
   render() {
     let indexOfLastItem = this.state.currentPage * this.state.itemsPerPage

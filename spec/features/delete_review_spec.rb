@@ -13,6 +13,7 @@ feature "Add Review" do
     click_link 'Delete Review'
 
     expect(page).to have_content("Deleted")
+    expect(page).to have_content("Be the first to review this item!")
     expect(page).to_not have_content("Test review")
   end
 

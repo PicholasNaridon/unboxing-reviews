@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authorize_user, except: [:index, :show]
   def index
     @items = Item.all
+    @items = Item.search(params[:term])
   end
 
   def new

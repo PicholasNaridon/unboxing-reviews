@@ -28,7 +28,7 @@ describe('Items Index', () => {
         expect(pageText).not.toMatch('item viral');
 
         done();
-      },0)
+      },0);
     });
   });
 });

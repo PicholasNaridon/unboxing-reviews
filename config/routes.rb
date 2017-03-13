@@ -6,18 +6,15 @@ Rails.application.routes.draw do
     end
   end
 
-
   resources :items do
     resources :reviews
   end
 
   resources :items
 
-
   resources :reviews
 
   devise_for :users
-
 
   get 'homes/index'
 
