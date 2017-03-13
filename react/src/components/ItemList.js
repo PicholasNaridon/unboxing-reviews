@@ -64,11 +64,11 @@ class ItemList extends Component {
     let renderPageNumbers = pageNumbers.map(number => {
       return (
         <li
-        key={number}
-        id={number}
-        onClick={this.handleClick}
+          key={number}
+          id={number}
+          onClick={this.handleClick}
         >
-        {number}
+          {number}
         </li>
       );
     });
@@ -77,7 +77,7 @@ class ItemList extends Component {
       <div>
         {newItems}
         <ul>
-        {renderPageNumbers}
+          {renderPageNumbers}
         </ul>
       </div>
 
