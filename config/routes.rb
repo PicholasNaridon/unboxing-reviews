@@ -13,11 +13,9 @@ Rails.application.routes.draw do
 
   resources :items
 
-
   resources :reviews
 
   devise_for :users
-
 
   get 'homes/index'
 

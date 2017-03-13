@@ -4,4 +4,10 @@
 
 </div>
 
+<%= form_tag(items_path, method: :get) do %>
+  <%= label_tag :term %>
+  <%= text_field_tag :term, params[:term] %>
+  <%= submit_tag 'Search', name: nil %>
+<% end %>
+
 <%= link_to "Add New Item", new_item_path %>
