@@ -46,10 +46,15 @@
 <div>
 
   <% @reviews.each do |review| %>
+    <% unless review.user.profile_photo.file.nil? %>
+      <%= image_tag review.user.profile_photo, size: "40x40", :style =>  "border-radius: 50%" %>
+    <% else %>
+      <%= image_tag 'http://i.imgur.com/jlAFuMQ.png', size: "40x40", :style =>  "border-radius: 50%" %>
+    <% end %>
       <p><%= review.user.username %> said:<br><%= review.body %> <br> Rating: <%= review.rating %></p>
         <% if review.user == current_user %>
           <%= link_to 'Delete Review', item_review_path(@item, review), method: :delete %> |
-          <%= link_to "Edit Review", edit_item_review_path(@item, review) %>
+          <%= link_to "Edit Review", edit_item_review_path(@item, review) %><br><br>
       <% end %>
   <% end %>
 
