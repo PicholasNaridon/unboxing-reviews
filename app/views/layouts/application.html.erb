@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <title>UnboxingReviews</title>
@@ -21,5 +21,58 @@
   <body>
     <%= link_to 'Home', root_path %>
     <%= yield %>
+  </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+  </head>
+
+  <body>
+  <div class="topbar">
+    <div class="top-bar topbar">
+       <div class="top-bar-left">
+         <ul class="menu">
+           <li class="topbar"><%= link_to 'Unboxed', root_path, class: "topbar-text" %></li>
+           <li><%= form_tag(items_path, method: :get) do %>
+             <%= label_tag %>
+             <%= text_field_tag :term, params[:term] %></li>
+             <li class="topbar"><%= submit_tag 'Search', name: nil, class: "button expanded" %>
+           <% end %>
+         </li>
+         </ul>
+       </div>
+
+       <div class="top-bar-right">
+         <ul class="menu ">
+           <% if user_signed_in? %>
+           <li class="topbar"><p><%= link_to 'Sign Out', destroy_user_session_path, class: "topbar-text", method: :delete %> | <%= link_to 'My Profile', edit_user_registration_path, class: "topbar-text" %></p></li>
+           <% else %>
+           <li class="topbar"><p><%= link_to 'Sign Up', new_user_registration_path, class: "topbar-text" %> | <%= link_to 'Login', new_user_session_path, class: "topbar-text" %></p></li>
+           <% end %>
+         </ul>
+       </div>
+     </div>
+   </div>
+    <div class="row">
+    <%= yield %>
+    </div>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/what-input.js"></script>
+    <script src="js/vendor/foundation.js"></script>
+    <script src="js/app.js"></script>
+
   </body>
 </html>
