@@ -3,9 +3,12 @@ import jasmineEnzyme from 'jasmine-enzyme';
 import React from 'react';
 import $ from 'jquery';
 import 'jasmine-ajax';
+import ReactTestUtils from 'react-addons-test-utils';
+import createResponseFromFixture from './support/createResponseFromFixture';
 
 Object.assign(global, {
   jasmineEnzyme,
+  createResponseFromFixture,
   mount,
   React,
   shallow,
