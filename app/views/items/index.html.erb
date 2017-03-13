@@ -1,15 +1,7 @@
 <h1>Items</h1>
 
-<%= form_tag(items_path, method: :get) do %>
-  <%= label_tag :term %>
-  <%= text_field_tag :term, params[:term] %>
-  <%= submit_tag 'Search', name: nil %>
-<% end %>
+<div id="main-app">
 
-<% @items.each do |item| %>
-  <ul>
-    <li> <%= link_to item.name, item_path(item) %> </li>
-  </ul>
-<% end %>
+</div>
 
 <%= link_to "Add New Item", new_item_path %>
