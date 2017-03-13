@@ -15,6 +15,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'selenium-webdriver'
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'factory_girl'
