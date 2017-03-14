@@ -13,7 +13,7 @@
     <%= @item.image_url %>
     <br>
 
-  <% if @item.youtube_url != nil %>
+  <% if @item.youtube_url.present? %>
     <strong> Video: </strong><br>
     <iframe width="560" height="315" src='https://www.youtube.com/embed/<%=@embed%>' frameborder="0" allowfullscreen></iframe><br>
     <% else %>
