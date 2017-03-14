@@ -1,6 +1,8 @@
 source 'https://rubygems.org/'
 ruby "2.3.3"
 
+gem 'fog'
+gem 'carrierwave', '~> 1.0'
 gem 'rails', '~> 5.0.0'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
@@ -27,6 +29,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'valid_attribute'
   gem 'shoulda-matchers', require: false
+  gem 'dotenv-rails'
 end
 
 group :test do
