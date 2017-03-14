@@ -40,8 +40,6 @@ feature 'user upvotes' do
 
       page.all('.downvote')[0].click
       page.all('.downvote')[0].click
-
-
       expect(page).to have_content('0')
     end
 
@@ -53,7 +51,6 @@ feature 'user upvotes' do
 
       page.all('.upvote')[0].click
       page.all('.upvote')[0].click
-
 
       expect(page).to have_content('0')
     end
@@ -67,7 +64,6 @@ feature 'user upvotes' do
       page.all('.downvote')[0].click
       page.all('.upvote')[0].click
 
-
       expect(page).to have_content('1')
     end
 
@@ -80,7 +76,6 @@ feature 'user upvotes' do
 
       page.all('.upvote')[0].click
       page.all('.downvote')[0].click
-
 
       expect(page).to have_content('-1')
     end

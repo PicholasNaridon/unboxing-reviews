@@ -6,7 +6,6 @@ class Review < ApplicationRecord
   belongs_to :user
   has_many :votes, dependent: :destroy
 
-
   def votes_total
     if self.votes.nil?
       return 0

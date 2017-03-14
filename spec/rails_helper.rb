@@ -55,7 +55,6 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
 
-
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
@@ -63,8 +62,6 @@ RSpec.configure do |config|
 end
 require "capybara/rails"
 require "valid_attribute"
-
-
 
 def sign_in(user)
   visit root_path

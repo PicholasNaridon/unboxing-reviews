@@ -13,8 +13,8 @@ $(document).ready(function() {
 
       request.done(function(data) {
         $('.total-votes-' + data.review_id ).html(data.votes_count);
-      })
-   })
+      });
+   });
 
   $('.downvote').on('click', function(e) {
      e.preventDefault();
@@ -30,6 +30,6 @@ $(document).ready(function() {
 
       request.done(function(data) {
         $('.total-votes-' + data.review_id ).html(data.votes_count);
-      })
+      });
   });
-})
+});
