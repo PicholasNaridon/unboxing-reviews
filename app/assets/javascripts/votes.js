@@ -1,17 +1,17 @@
-$(document).ready(() => {
+$(document).ready(function() {
   $('.upvote').on('click', function(e) {
      e.preventDefault();
 
-     let $this = $(this);
-     let reviewId = $this.data('reviewid');
+     var $this = $(this);
+     var reviewId = $this.data('reviewid');
 
-     let request = $.ajax({
+     var request = $.ajax({
         method: "POST",
         url: '/reviews/' + reviewId + '/votes',
         data: { value: 1 }
       });
 
-      request.done((data) => {
+      request.done(function(data) {
         $('.total-votes-' + data.review_id ).html(data.votes_count);
       })
    })
@@ -19,16 +19,16 @@ $(document).ready(() => {
   $('.downvote').on('click', function(e) {
      e.preventDefault();
 
-     let $this = $(this);
-     let reviewId = $this.data('reviewid');
+     var $this = $(this);
+     var reviewId = $this.data('reviewid');
 
-     let request = $.ajax({
+     var request = $.ajax({
         method: "POST",
         url: '/reviews/' + reviewId + '/votes',
         data: { value: -1 }
       });
 
-      request.done((data) => {
+      request.done(function(data) {
         $('.total-votes-' + data.review_id ).html(data.votes_count);
       })
   });
