@@ -1,7 +1,7 @@
 
 <h1> <%= @item.name %> </h1>
 
-<h3>Posted by <%= @creator.username %> </h3>
+<h3><%= image_tag @item.user.profile_photo, size: "40x40", :style =>  "border-radius: 50%" %> Posted by <%= @creator.username %> </h3>
   <% if @item.youtube_url.present? %>
       <strong> Video: </strong><br>
       <iframe width="560" height="315" src='https://www.youtube.com/embed/<%=@embed%>' frameborder="0" allowfullscreen></iframe><br>
