@@ -11,15 +11,12 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :users, only: [:index]
+    resources :users
   end
 
   resources :items
-
   resources :search
-
   resources :reviews
-
   devise_for :users
 
   get 'homes/index'
