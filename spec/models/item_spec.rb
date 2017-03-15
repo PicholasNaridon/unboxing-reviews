@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 require 'rails_helper'
 
 RSpec.describe Item, type: :item do
@@ -11,5 +10,3 @@ RSpec.describe Item, type: :item do
   it { should_not have_valid(:youtube_url).when('youtube.com') }
   it { should_not have_valid(:youtube_url).when('test.com') }
 end
-=======
->>>>>>> 857a57d2c946c8ba161c5ca133ab692b8183eee5
