@@ -33,12 +33,12 @@
        <div class="top-bar-right">
          <ul class="menu ">
            <% if user_signed_in? %>
-           <li class="topbar"><p><%= link_to 'Sign Out', destroy_user_session_path, class: "topbar-text", method: :delete %> | <%= link_to 'My Profile', edit_user_registration_path, class: "topbar-text" %>  <%= image_tag current_user.profile_photo, size: "40x40", :style =>  "border-radius: 50%" %></p></li>
+           <li class="topbar"><p><%= link_to 'Sign Out', destroy_user_session_path, class: "topbar-text", method: :delete %> | <%= link_to 'My Profile', edit_user_registration_path, class: "topbar-text" %> <%= image_tag current_user.profile_photo, size: "40x40", :style =>  "border-radius: 50%" %> <%= link_to "Admin", admin_users_path %> </p></li>
            <% else %>
            <li class="topbar"><p><%= link_to 'Sign Up', new_user_registration_path, class: "topbar-text" %> | <%= link_to 'Login', new_user_session_path, class: "topbar-text" %></p></li>
            <% end %>
+           <li class="topbar" id="notice"><%= notice %></li>
          </ul>
-         <p id="notice"><%= notice %></p>
        </div>
      </div>
    </div>

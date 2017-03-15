@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
+  namespace :admin do
+    resources :users, only: [:index]
+  end
+
   resources :items
 
   resources :search
