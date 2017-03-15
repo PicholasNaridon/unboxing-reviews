@@ -56,16 +56,13 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-<<<<<<< HEAD
     childprocess (0.6.2)
       ffi (~> 1.0, >= 1.0.11)
     cliver (0.3.2)
-=======
     carrierwave (1.0.0)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
->>>>>>> master
     coderay (1.1.1)
     concurrent-ruby (1.0.5)
     coveralls (0.8.19)
