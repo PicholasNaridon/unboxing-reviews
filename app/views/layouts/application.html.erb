@@ -1,31 +1,54 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>UnboxingReviews</title>
-    <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
   </head>
-  <nav>
-    <ul class="account-stuff">
-      <% if user_signed_in? %>
-      <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %> | <%= link_to 'My Profile', edit_user_registration_path %></li>
-      <% else %>
-      <li><%= link_to 'Sign Up', new_user_registration_path %> | <%= link_to 'Login', new_user_session_path %></li>
-      <% end %>
-    </ul>
-  </nav>
-  <p class="notice"><%= notice %></p>
 
   <body>
-    <%= link_to 'Home', root_path %>
+  <div class="topbar">
+    <div class="top-bar topbar">
+       <div class="top-bar-left">
+         <ul class="menu">
+           <li class="topbar"><%= link_to 'Unboxed', root_path, class: "topbar-text" %></li>
+           <li class="topbar">
+             <%= form_tag(search_index_path, method: :get) do %>
+             <%= label_tag :term %>
+             <%= text_field_tag :term, params[:term] %>
+             <li class="topbar"><%= submit_tag 'Search', name: nil, class: "button expanded" %></li>
+           </li>
+           <% end %>
+         </ul>
+       </div>
 
-    <%= form_tag(search_index_path, method: :get) do %>
-      <%= label_tag :term %>
-      <%= text_field_tag :term, params[:term] %>
-      <%= submit_tag 'Search', name: nil %>
-    <% end %>
+       <div class="top-bar-right">
+         <ul class="menu ">
+           <% if user_signed_in? %>
+           <li class="topbar"><p><%= link_to 'Sign Out', destroy_user_session_path, class: "topbar-text", method: :delete %> | <%= link_to 'My Profile', edit_user_registration_path, class: "topbar-text" %>  <%= image_tag current_user.profile_photo, size: "40x40", :style =>  "border-radius: 50%" %></p></li>
+           <% else %>
+           <li class="topbar"><p><%= link_to 'Sign Up', new_user_registration_path, class: "topbar-text" %> | <%= link_to 'Login', new_user_session_path, class: "topbar-text" %></p></li>
+           <% end %>
+         </ul>
+         <p id="notice"><%= notice %></p>
+       </div>
+     </div>
+   </div>
+    <div class="row">
     <%= yield %>
+    </div>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/what-input.js"></script>
+    <script src="js/vendor/foundation.js"></script>
+    <script src="js/app.js"></script>
+
   </body>
 </html>

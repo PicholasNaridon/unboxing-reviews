@@ -12,11 +12,42 @@
  *
  *= require_tree .
  *= require_self
+ *= require foundation_and_overrides
+
  */
 
-body{
+body.home{
   background-image: url(/assets/box.jpg);
-  background-size: auto;
   background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top;
+  background-size: cover;
 
+}
+
+body{
+background: -webkit-linear-gradient(left top, #c5cfc6, #b0a18f); /* For Safari 5.1 to 6.0 */
+background: -o-linear-gradient(bottom right, #c5cfc6, #b0a18f); /* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(bottom right, #c5cfc6, #b0a18f); /* For Firefox 3.6 to 15 */
+background: linear-gradient(to bottom right,#e6e1c2, #666666); /* Standard syntax */
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-position: top;
+background-size: cover;
+}
+
+.submit-label{
+font-size: 16px
+}
+
+.topbar{
+  background-color: #111625;
+}
+
+.topbar-text{
+  color: #e6e1c2;
+}
+
+.button{
+  background-color: #666666
 }
