@@ -8,5 +8,5 @@ RSpec.describe Item, type: :item do
 
   it { should_not have_valid(:name).when(nil) }
   it { should_not have_valid(:youtube_url).when('youtube.com') }
-  it { should_not have_valid(:youtube_url).when('test.com') }
+  it { should_not have_valid(:purchase_url).when('test.com') }
 end
