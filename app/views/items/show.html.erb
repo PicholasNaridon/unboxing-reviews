@@ -1,12 +1,14 @@
 
-<p> <%= @item.name %> </p>
+<h1> <%= @item.name %> </h1>
 
 <h3>Posted by <%= @creator.username %> </h3>
-<strong> Video: </strong><br>
-  <% if @item.youtube_url != "" %>
-    <iframe width="560" height="315" src='https://www.youtube.com/embed/<%=@embed%>' frameborder="0" allowfullscreen></iframe><br>
+  <% if @item.youtube_url.present? %>
+      <strong> Video: </strong><br>
+      <iframe width="560" height="315" src='https://www.youtube.com/embed/<%=@embed%>' frameborder="0" allowfullscreen></iframe><br>
+    <% else %>
+      <br>
   <% end %>
-<p class="vcard" style="border: 1px solid black;">
+  <p class="vcard" style="border: 1px solid black;">
   <strong>Name:</strong>
   <%= @item.name %>
   <br>
@@ -16,7 +18,6 @@
   <strong>Image:</strong>
     <%= @item.image_url %>
     <br>
-
   <strong>Purchase URL: </strong>
     <%= @item.purchase_url %>
     <br>
@@ -44,10 +45,15 @@
 <div>
 
   <% @reviews.each do |review| %>
+    <% unless review.user.profile_photo.file.nil? %>
+      <%= image_tag review.user.profile_photo, size: "40x40", :style =>  "border-radius: 50%" %>
+    <% else %>
+      <%= image_tag 'http://i.imgur.com/jlAFuMQ.png', size: "40x40", :style =>  "border-radius: 50%" %>
+    <% end %>
       <p><%= review.user.username %> said:<br><%= review.body %> <br> Rating: <%= review.rating %></p>
         <% if review.user == current_user %>
           <%= link_to 'Delete Review', item_review_path(@item, review), method: :delete %> |
-          <%= link_to "Edit Review", edit_item_review_path(@item, review) %>
+          <%= link_to "Edit Review", edit_item_review_path(@item, review) %><br><br>
       <% end %>
   <% end %>
 

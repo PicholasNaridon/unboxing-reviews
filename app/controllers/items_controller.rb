@@ -1,12 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authorize_user, except: [:index, :show]
   def index
-    @items = Item.search(params[:term])
-    # @items = if params[:term]
-    #   Item.where('LOWER(name) LIKE ?', "%#{params[:term]}%")
-    # else
-    #   Item.all
-    # end
+    @items = Item.all
   end
 
   def new
@@ -24,6 +19,10 @@ class ItemsController < ApplicationController
     @review = Review.new
     @reviews = @item.reviews
     @reviews_start = 0
+    if @item.youtube_url.present?
+      @url = @item.youtube_url
+      @embed = @url.split("=").last
+    end
   end
 
   def update
@@ -60,7 +59,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :description, :image_url, :purchase_url, :youtube_url, :user, :term)
+    params.require(:item).permit(:name, :description, :image_url, :purchase_url, :youtube_url, :user)
   end
 
   def authorize_user

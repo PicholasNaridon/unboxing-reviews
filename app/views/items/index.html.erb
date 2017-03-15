@@ -2,17 +2,8 @@
     <div class="small-6 small-offset-3 columns">
 <h1>Items</h1>
 
-<%= form_tag(items_path, method: :get) do %>
-  <%= label_tag %>
-  <%= text_field_tag :term, params[:term] %>
-  <%= submit_tag 'Search', name: nil, class: "button expanded" %>
-<% end %>
-<div class="small-3 small-centered columns">
-<% @items.each do |item| %>
-  <ul>
-    <li> <%= link_to item.name, item_path(item) %> </li>
-  </ul>
-<% end %>
+<div id="main-app">
+
 </div>
 
 <%= link_to "Add New Item", new_item_path %>
