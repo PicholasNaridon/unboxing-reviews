@@ -1,6 +1,8 @@
 source 'https://rubygems.org/'
 ruby "2.3.3"
 
+
+gem 'foundation-rails'
 gem 'fog'
 gem 'carrierwave', '~> 1.0'
 gem 'rails', '~> 5.0.0'

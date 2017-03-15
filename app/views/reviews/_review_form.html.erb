@@ -12,25 +12,24 @@
  <% end %>
 
   <div>
-    <%= f.label :body, "Submit a review" %>
-    <br></br>
-    <%= f.text_area :body %>
+    <%= f.label :body, "Submit a review", class: "submit-label"  %>
+    <%= f.text_area :body, size: "8x7"  %>
     <br>
   </div>
 
 
-  <div class="radio_buttons">
-    <%= f.label :rating, "1" %>
+  <div class="radio_buttons small-push-3">
     <%= f.radio_button(:rating, 1) %>
-    <%= f.label :rating, "2" %>
+    <%= f.label :rating, "1" %>
     <%= f.radio_button(:rating, 2) %>
-    <%= f.label :rating, "3" %>
+    <%= f.label :rating, "2" %>
     <%= f.radio_button(:rating, 3) %>
-    <%= f.label :rating, "4" %>
+    <%= f.label :rating, "3" %>
     <%= f.radio_button(:rating, 4) %>
-    <%= f.label :rating, "5" %>
+    <%= f.label :rating, "4" %>
     <%= f.radio_button(:rating, 5) %>
+    <%= f.label :rating, "5" %>
   </div>
 
-<%= f.submit "Submit" %>
+<%= f.submit "Submit", class: "button expanded" %>
 <% end %>
