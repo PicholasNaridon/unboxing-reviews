@@ -1,8 +1,14 @@
 
 <h1> <%= @item.name %> </h1>
 
-<h2>Posted by <%= @creator.username %> </h2>
-<p>
+<h3><%= image_tag @item.user.profile_photo, size: "40x40", :style =>  "border-radius: 50%" %> Posted by <%= @creator.username %> </h3>
+  <% if @item.youtube_url.present? %>
+      <strong> Video: </strong><br>
+      <iframe width="560" height="315" src='https://www.youtube.com/embed/<%=@embed%>' frameborder="0" allowfullscreen></iframe><br>
+    <% else %>
+      <br>
+  <% end %>
+  <p class="vcard" style="border: 1px solid black;">
   <strong>Name:</strong>
   <%= @item.name %>
   <br>
@@ -12,17 +18,10 @@
   <strong>Image:</strong>
     <%= @item.image_url %>
     <br>
-
-  <% if @item.youtube_url.present? %>
-    <strong> Video: </strong><br>
-    <iframe width="560" height="315" src='https://www.youtube.com/embed/<%=@embed%>' frameborder="0" allowfullscreen></iframe><br>
-    <% else %>
-    <br>
-  <% end %>
-
   <strong>Purchase URL: </strong>
     <%= @item.purchase_url %>
     <br>
+  </p>
   <strong> Reviews: </strong>
 <br>
   <% if @creator == current_user %>
@@ -61,5 +60,5 @@
 </div>
 
 <% if user_signed_in? %>
-  <%= render "reviews/review_form", item: @item, review: @review %>
+  <div class="small-6 small-pull-6 columns"><%= render "reviews/review_form", item: @item, review: @review%></div>
 <% end %>
