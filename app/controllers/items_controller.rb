@@ -52,6 +52,10 @@ class ItemsController < ApplicationController
 
   def destroy
     @item = Item.find(params[:id])
+    @reviews =  @item.reviews
+    @reviews.each do |review|
+      review.destroy
+    end
     @item.destroy
     flash[:notice] = 'Item has been deleted!'
     redirect_to items_path
