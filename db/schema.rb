@@ -45,12 +45,13 @@ ActiveRecord::Schema.define(version: 20170315172126) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.text     "body",       null: false
-    t.integer  "rating"
+    t.text     "body",                   null: false
+    t.string   "rating"
     t.integer  "item_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "sum_votes",  default: 0, null: false
     t.index ["item_id"], name: "index_reviews_on_item_id", using: :btree
     t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
@@ -73,6 +74,14 @@ ActiveRecord::Schema.define(version: 20170315172126) do
     t.boolean  "admin",                  default: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "review_id", null: false
+    t.integer "user_id",   null: false
+    t.integer "value"
+    t.index ["review_id"], name: "index_votes_on_review_id", using: :btree
+    t.index ["user_id"], name: "index_votes_on_user_id", using: :btree
   end
 
 end

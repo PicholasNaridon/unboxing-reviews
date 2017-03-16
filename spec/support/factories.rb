@@ -10,4 +10,9 @@ FactoryGirl.define do
     sequence(:name) { |n| "item#{n}" }
     description 'item description'
   end
+
+  factory :review do
+    sequence(:body) { |n| "body#{n}" }
+    rating 1
+  end
 end

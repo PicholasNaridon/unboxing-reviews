@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.item = @item
     @review.user = @user
+    @review.sum_votes = 0
     if @review.save
       flash[:notice] = "Review successfully saved!!"
       redirect_to item_path(@item)

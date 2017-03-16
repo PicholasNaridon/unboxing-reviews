@@ -21,6 +21,9 @@ group :development do
 end
 
 group :development, :test do
+  gem 'poltergeist'
+  gem 'database_cleaner'
+  gem 'selenium-webdriver', '2.53.4'
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'factory_girl'
