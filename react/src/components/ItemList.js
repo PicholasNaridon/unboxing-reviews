@@ -20,7 +20,7 @@ class ItemList extends Component {
   }
 
   getData() {
-    fetch('https://un-boxed.herokuapp.com/api/v1/items.json')
+    fetch('http://localhost:3000/api/v1/items.json')
       .then(response => {
         if (response.ok) {
           return response;
@@ -52,6 +52,7 @@ class ItemList extends Component {
           id={item.id}
           key={index}
           name={item.name}
+          picture={item.image_url}
         />
       )
     });
@@ -63,13 +64,13 @@ class ItemList extends Component {
 
     let renderPageNumbers = pageNumbers.map(number => {
       return (
-        <li
+        <a className="tiny button"
           key={number}
           id={number}
           onClick={this.handleClick}
         >
           {number}
-        </li>
+        </a>
       );
     });
 
@@ -77,7 +78,9 @@ class ItemList extends Component {
       <div>
         {newItems}
         <ul>
-          {renderPageNumbers}
+          <div className="small-4 small-push-4 columns">
+            {renderPageNumbers}
+          </div>
         </ul>
       </div>
 

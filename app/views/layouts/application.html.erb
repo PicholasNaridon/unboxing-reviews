@@ -17,12 +17,13 @@
        <div class="top-bar-left">
          <ul class="menu">
            <li class="topbar"><%= link_to 'Unboxed', root_path, class: "topbar-text" %></li>
+           <li class="topbar"><%= link_to 'Items', items_path, class: "topbar-text" %></li>
+
            <li class="topbar">
-             <%= form_tag(search_index_path, method: :get) do %>
-             <%= label_tag :term %>
-             <%= text_field_tag :term, params[:term] %>
-             <li class="topbar"><%= submit_tag 'Search', name: nil, class: "button expanded" %></li>
-           </li>
+                 <%= form_tag(search_index_path, method: :get) do %>
+                 <%= text_field_tag :term, params[:term] %>
+               <li class="topbar"><%= submit_tag 'Search', name: nil, class: "button expanded" %></li>
+             </li>
            <% end %>
          </ul>
        </div>
@@ -40,7 +41,7 @@
            <li class="topbar" id="notice"><p><%= notice %></p></li>
          </ul>
        </div>
-     </div>   
+     </div>
    </div>
     <div class="row">
     <%= yield %>

@@ -48,6 +48,24 @@ font-size: 16px
   color: #e6e1c2;
 }
 
+.card{
+  border-radius: 5%;
+  background-color: #666666;
+}
+
+.image{
+  display: block;
+  margin: auto;
+  width: 100%;
+  max-width: 300px;
+  max-height: 300px;
+}
+
 .button{
   background-color: #666666
+}
+
+.card-section{
+  background-color: #111625;
+  text-align: center;
 }
