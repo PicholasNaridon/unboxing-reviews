@@ -65,7 +65,7 @@ Rails.application.configure do
     user_name:            ENV["SENDGRID_USERNAME"],
     password:             ENV["SENDGRID_PASSWORD"],
     authentication:       "plain"
-}
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
