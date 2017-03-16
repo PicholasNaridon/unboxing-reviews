@@ -10,13 +10,17 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
+
   resources :reviews, only: [:new, :create, :edit, :update, :destroy] do
     resources :votes, only: [:create]
   end
 
+  namespace :admin do
+    resources :users
+  end
 
+  resources :items
   resources :search
-
   resources :reviews
   devise_for :users
   get 'homes/index'
