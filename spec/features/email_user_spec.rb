@@ -18,7 +18,7 @@
 # end
 require 'rails_helper'
 
-feature 'Sign up' , %Q{
+feature 'Sign up' , %{
   As an authenticated user
   I want to sign up
   So that I can add items and reviews
