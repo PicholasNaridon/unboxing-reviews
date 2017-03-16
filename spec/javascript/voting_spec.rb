@@ -68,7 +68,6 @@ feature 'user upvotes' do
       expect(page).to have_content('1')
     end
 
-
     scenario 'change upvote to downvote', js: true do
       visit item_path(item)
 
