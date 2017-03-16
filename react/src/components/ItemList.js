@@ -20,7 +20,7 @@ class ItemList extends Component {
   }
 
   getData() {
-    fetch('http://localhost:3000/api/v1/items.json')
+    fetch('http://un-boxed.herokuapp.com/api/v1/items.json')
       .then(response => {
         if (response.ok) {
           return response;
