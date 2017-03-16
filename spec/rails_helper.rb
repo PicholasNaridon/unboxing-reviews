@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'capybara/poltergeist'
 
 Capybara.javascript_driver = :poltergeist
+Capybara.raise_server_errors == false
 
 
 # Add additional requires below this line. Rails is not loaded until this point!

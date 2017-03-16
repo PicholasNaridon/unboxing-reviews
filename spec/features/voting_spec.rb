@@ -6,7 +6,8 @@ feature 'user upvotes' do
   let!(:review) { FactoryGirl.create(:review, user: user, item: item) }
 
   context 'authenticated user' do
-    before do
+    before(:each) do
+      sleep(5)
       sign_in(user)
     end
 
