@@ -1,7 +1,7 @@
 source 'https://rubygems.org/'
 ruby "2.3.3"
 
-
+gem 'sendgrid-ruby'
 gem 'foundation-rails'
 gem 'fog'
 gem 'carrierwave', '~> 1.0'
