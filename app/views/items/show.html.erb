@@ -60,11 +60,7 @@
       <h5> Score: </h5>
       <p id='voting-number' class="total-votes-<%= review.id %>"><%= review.sum_votes %></p>
   <% end %>
-
-
-
 </div>
-
 <% if user_signed_in? %>
   <div class="small-6 small-pull-6 columns"><%= render "reviews/review_form", item: @item, review: @review%></div>
 <% end %>
