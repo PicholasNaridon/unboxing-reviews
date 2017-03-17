@@ -7,7 +7,7 @@ class ItemList extends Component {
     this.state = {
       items: [],
       currentPage: 1,
-      itemsPerPage: 5
+      itemsPerPage: 6
     };
     this.getData = this.getData.bind(this);
     this.handleClick = this.handleClick.bind(this)
@@ -20,7 +20,7 @@ class ItemList extends Component {
   }
 
   getData() {
-    fetch('http://localhost:3000/api/v1/items.json')
+    fetch('https://un-boxed.herokuapp.com/api/v1/items.json')
       .then(response => {
         if (response.ok) {
           return response;
@@ -76,7 +76,9 @@ class ItemList extends Component {
 
     return(
       <div>
-        {newItems}
+        <div>
+          {newItems}
+        </div>
         <ul>
           <div className="small-4 small-push-4 columns">
             {renderPageNumbers}
