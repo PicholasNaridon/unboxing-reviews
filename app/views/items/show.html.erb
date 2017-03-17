@@ -8,7 +8,6 @@
     <% else %>
       <br>
   <% end %>
-  <p class="vcard" style="border: 1px solid black;">
   <strong>Description:</strong>
     <%= @item.description %>
   <br>
@@ -18,8 +17,6 @@
   <strong>Purchase URL: </strong>
     <%= @item.purchase_url %>
     <br>
-  </p>
-
   <% if @creator == current_user %>
     <%= link_to 'Edit Item', edit_item_path(@item) %> |
     <%= link_to 'Delete Item', @item, method: :delete%>
