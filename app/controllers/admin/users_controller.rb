@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :authorize_admin
 
   def index
     @users = User.all
@@ -17,5 +18,12 @@ class Admin::UsersController < ApplicationController
     item.destroy unless item.nil?
     user.destroy
     redirect_to admin_users_path
+  end
+
+  def authorize_admin
+    if !current_user.try(:admin?)
+      flash[:notice] = "You're not an admin"
+      redirect_to root_path
+    end
   end
 end
