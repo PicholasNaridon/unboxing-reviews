@@ -1,5 +1,7 @@
-Hello <%= @review.product.user.first_name %>,
+Hi <%= @review.user.username %>
 
-<%= @review.user.full_name %> has left a new review for your product <%= @review.product.name %>.
+Someone has left a new review for your item <%= @review.item.name %>.
 
-Peace!
+<%= link_to "Check it out here!!!", @review.item %>
+
+Bye!
