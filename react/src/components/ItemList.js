@@ -7,7 +7,7 @@ class ItemList extends Component {
     this.state = {
       items: [],
       currentPage: 1,
-      itemsPerPage: 5
+      itemsPerPage: 6
     };
     this.getData = this.getData.bind(this);
     this.handleClick = this.handleClick.bind(this)
@@ -52,6 +52,7 @@ class ItemList extends Component {
           id={item.id}
           key={index}
           name={item.name}
+          picture={item.image_url}
         />
       )
     });
@@ -63,21 +64,25 @@ class ItemList extends Component {
 
     let renderPageNumbers = pageNumbers.map(number => {
       return (
-        <li
+        <a className="tiny button"
           key={number}
           id={number}
           onClick={this.handleClick}
         >
           {number}
-        </li>
+        </a>
       );
     });
 
     return(
       <div>
-        {newItems}
+        <div>
+          {newItems}
+        </div>
         <ul>
-          {renderPageNumbers}
+          <div className="small-4 small-push-4 columns">
+            {renderPageNumbers}
+          </div>
         </ul>
       </div>
 
