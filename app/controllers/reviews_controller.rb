@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.item = @item
     @review.user = @user
+    @review.sum_votes = 0
     if @review.save
       ReviewMailer.new_review(@review).deliver_now
       flash[:notice] = "Review successfully saved!!"
