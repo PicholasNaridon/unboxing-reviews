@@ -1,7 +1,10 @@
 <div class="small-12 medium-12 large-7 columns">
 <h1> <%= @item.name %> </h1>
-
-<h3><%= image_tag @item.user.profile_photo, size: "40x40", :style =>  "border-radius: 50%" %> Posted by <%= @creator.username %> </h3>
+<% if respond_to? :user %>
+  <h3><%= image_tag @item.user.profile_photo, size: "40x40", :style =>  "border-radius: 50%" %> Posted by <%= @creator.username %> </h3>
+<% else %>
+  <h3><%= image_tag "http://i.imgur.com/jlAFuMQ.png", size: "40x40", :style =>  "border-radius: 50%" %> Posted by <i>Deleted User</i> </h3>
+<% end %>
   <% if @item.youtube_url.present? %>
       <strong> Video: </strong><br>
       <iframe width="560" height="315" src='https://www.youtube.com/embed/<%=@embed%>' frameborder="0" allowfullscreen></iframe><br>
