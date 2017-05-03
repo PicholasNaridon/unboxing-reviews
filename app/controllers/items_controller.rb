@@ -67,7 +67,7 @@ class ItemsController < ApplicationController
   end
 
   def authorize_user
-    if !user_signed_in? 
+    if !user_signed_in?
       flash[:notice] = "Please log in to use this feature"
       redirect_to new_user_session_path
     end
